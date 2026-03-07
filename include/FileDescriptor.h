@@ -42,7 +42,7 @@ public:
     // Character operations
     char GetChar();
     void UngetChar(char c);
-    char PeekChar();  // Look ahead without consuming
+    char PeekChar(int offset=0)const;  // Look ahead without consuming
     
     // Line operations
     char *GetCurrLine() const;

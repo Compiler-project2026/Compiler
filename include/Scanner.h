@@ -1,7 +1,9 @@
 #ifndef SCANNER_H
 #define SCANNER_H
 
-#include "token.h"
+#include <unordered_map>
+#include <string>
+#include "Token.h"
 #include "FileDescriptor.h"
 
 class Scanner {
@@ -20,6 +22,8 @@ private:
     Token* scanString(FileDescriptor *fd);
 
     TokenType checkKeyword(const std::string& word);
+
+    static std::unordered_map<std::string, TokenType> keywordMap;
 };
 
 #endif

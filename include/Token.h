@@ -9,6 +9,7 @@ enum TokenType {
     T_IDENTIFIER,
     T_INTEGER,
     T_STRING,
+    T_FLOAT,
 
     // keywords
     T_PROGRAM,
@@ -17,7 +18,7 @@ enum TokenType {
     T_INTEGER_KW,
     T_BOOL,
     T_STRING_KW,
-    T_FLOAT,
+    T_FLOAT_KW,
     T_TRUE,
     T_FALSE,
     T_IF,
@@ -68,8 +69,9 @@ struct Token {
 
     TokenType type;
 
-    std::string str_value;  // for identifiers and strings
-    int int_value;          // for integers
+    std::string str_value="";  // for identifiers and strings
+    int int_value=0;          // for integers
+    float float_value = 0.0f;
 };
 
 #endif

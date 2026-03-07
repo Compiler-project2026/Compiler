@@ -80,7 +80,9 @@ void FileDescriptor::ReadLine()
     int c ; 
 
     while ((c= fgetc(fp))!=EOF && c != '\n'){
-    if (pos >= buf_size -2){
+   
+        if (c == '\r') continue;///////////
+        if (pos >= buf_size -2){
         ResizeBuffer();
     }
     buffer[pos++] =(char)c;
@@ -102,6 +104,8 @@ void FileDescriptor::ReadLine()
 
 //get the next char
 char FileDescriptor::GetChar(){
+    
+
     if (fp == nullptr){
         return EOF;
     }
@@ -139,6 +143,7 @@ char FileDescriptor::GetChar(){
     char_number++;
     
     return c;
+    
 }
 
 //put a char back 
@@ -154,15 +159,14 @@ if(char_number >0)
 
 
 //peek at next char
-char FileDescriptor::PeekChar()
-{
-char c = GetChar(); // take next char
-    if (c != EOF) // if EOF send the empty (no more data to send)
-    {
-        UngetChar(c); // else remove it
-    }
-    return c; 
+char FileDescriptor::PeekChar(int offset) const {
+    if (!buffer) return EOF;
+    int pos = char_number + offset;
+    if (pos < (int)strlen(buffer))
+        return buffer[pos];
+    return EOF;
 }
+
 //retun current line buffer
 char *FileDescriptor::GetCurrLine()const 
 {
@@ -193,7 +197,7 @@ bool FileDescriptor::IsOpen() const {
 
 // Check if EOF reached
 bool FileDescriptor::IsEOF() const {
-    return eof_reached && (buffer[char_number] == '\0' || char_number >= (int)strlen(buffer));
+  return eof_reached && (buffer[char_number] == '\0' || char_number >= (int)strlen(buffer));
 }
 
 

@@ -1,0 +1,21 @@
+# Single line comment
+## Block comment ##
+program myProg
+var x y z
+constant MAX = 100
+integer a = -123
+float b = 45.67
+float badFloat = 12.-34        # bad float
+bool flag = true
+string s = "Hello World"
+string badString = "This string never ends
+@illegalSymbol = 10            # illegal character
+if x < 10 then y := 5; else y := 10; fi
+while i <= 20 do i := i + 1; od
+read x, y
+write "Done"
+for i from 1 to 5 by 1 do x := x + i; od
+a != b
+x := y * (z + 2) / 3
+1abc = 5                        # invalid identifier starting with digit
+# Another comment
