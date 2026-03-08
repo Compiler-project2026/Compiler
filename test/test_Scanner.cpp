@@ -77,7 +77,9 @@ void printToken(Token* token) {
 
 int main() {
     const char* filename = "C:/Users/Lenovo/Desktop/compiler/Project/test/test_input.comp"; // Make sure this exists in the same folder as the exe
-    FileDescriptor fd(filename);
+    const char* filename2 = "/mnt/c/dev/Compiler/test/test_input.comp";
+    const char* filename3 = "/mnt/c/dev/Compiler/test/test_scanner.txt";
+    FileDescriptor fd(filename3);
 
     if (!fd.IsOpen()) {
         std::cerr << "Failed to open input file: " << filename << std::endl;
