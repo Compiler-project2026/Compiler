@@ -102,6 +102,11 @@ void FileDescriptor::ReadLine()
    buffer[pos]='\0';
 }
 
+
+
+
+
+
 //get the next char
 char FileDescriptor::GetChar(){
     
@@ -146,6 +151,7 @@ char FileDescriptor::GetChar(){
     
 }
 
+
 //put a char back 
 void FileDescriptor::UngetChar(char c)
 {
@@ -166,6 +172,9 @@ char FileDescriptor::PeekChar(int offset) const {
         return buffer[pos];
     return EOF;
 }
+
+
+
 
 //retun current line buffer
 char *FileDescriptor::GetCurrLine()const 

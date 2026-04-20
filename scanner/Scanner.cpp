@@ -107,6 +107,11 @@ Token* Scanner::scan(FileDescriptor *fd)
             return token;
 
         default:
+             if(c == '\r')  // silently skip stray carriage returns
+    {
+        delete token;
+        return scan(fd);
+    }
             fd->ReportError("Illegal character");
             token->type = T_ERROR;
             return token;
@@ -120,7 +125,7 @@ void Scanner::skipWhitespace(FileDescriptor *fd)
     {
         char c = fd->PeekChar();
 
-        if(isspace(c))
+        if(isspace(c)|| c == '\r')
             fd->GetChar();
         else
             break;
@@ -154,6 +159,10 @@ void Scanner::skipComment(FileDescriptor *fd)
             fd->GetChar();
     }
 }
+
+
+
+
 
 Token* Scanner::scanIdentifier(FileDescriptor *fd, char first)
 {

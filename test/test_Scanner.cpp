@@ -4,6 +4,11 @@
 #include "FileDescriptor.h"
 #include "Token.h"
 
+
+//to run it in Linux :
+//g++ -o test_scanner test/test_Scanner.cpp scanner/Scanner.cpp scanner/FileDescriptor.cpp -I./include && ./test_scanner
+
+
 // Function to print a token in readable format
 void printToken(Token* token) {
     if (!token) return;
